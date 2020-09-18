@@ -16,9 +16,9 @@ $(document).ready(function() {
     );
 });
 
-
 //ALBUM LIST
 function albumList(results) {
+
 var source = $("#album").html();
 var template = Handlebars.compile(source);
 
@@ -26,21 +26,17 @@ for (var i = 0; i < results.length; i++) {
 var albums = results[i];
 var html = template(albums);
 
-$(".container").append(html);
+$(".cds-container").append(html);
+}}
 
 // ESERCIZIO BONUS: SELECT GENERE
-var select = $("#select").val();
-var genre = results[i].genre.toLowerCase();
-console.log(genre);
-
 $('#select').on('change', function() {
-  var value = $(this).val().toLowerCase();
-  console.log(value);
-  // if (value == genre) {
-  //     $(".container").show()
-  //   } else {
-  //       $(".container").hide();
-  //     };
+  var value = $(this).val();
+
+  if (value == "") {
+    $(".cd").show();
+  } else {
+    $(".cd").hide();
+    $(".cd[data-genre='"+value+"']").show();
+  }
 });
-}
-}
